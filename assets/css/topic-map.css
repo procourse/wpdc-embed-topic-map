@@ -1,0 +1,113 @@
+.topic-map {
+	margin: 20px 0;
+	background: #f9f9f9;
+  border: 1px solid #e9e9e9;
+  border-top: none;
+}
+
+.map:first-of-type {
+    display: flex;
+}
+
+.topic-map section {
+    border-top: 1px solid #e9e9e9;
+}
+
+.map:first-of-type .buttons {
+    margin-left: auto;
+    order: 15;
+}
+
+.topic-map .buttons {
+    float: right;
+}
+
+.topic-map ul {
+    margin: 0;
+    list-style: none;
+}
+
+ul, dd {
+    padding: 0;
+}
+
+.map:first-of-type .buttons .btn {
+    height: 100%;
+}
+
+.topic-map .buttons .btn {
+    border: 0;
+    padding: 0 23px;
+    color: #919191;
+    background: #f9f9f9;
+    border-left: 1px solid #e9e9e9;
+    border-top: 1px solid transparent;
+}
+
+.btn {
+    font-weight: normal;
+		display: inline-block;
+    margin: 0;
+    font-size: 1em;
+    line-height: 1.2;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.25s;
+}
+
+
+.topic-map .buttons .btn .fa {
+    margin: 0;
+    font-size: 1.3195em;
+    line-height: 52px;
+		color: #646464;
+		opacity: 0.7;
+}
+
+.topic-map .map li {
+    float: left;
+    padding: 7px 10px;
+}
+
+.topic-map h4 {
+    margin: 1px 0 2px 0;
+    color: #919191;
+    font-weight: normal;
+    font-size: .8706em;
+    line-height: 1;
+    padding-top: 0;
+}
+
+.topic-map .map .topic-map-post {
+    margin-top: 6px;
+}
+
+.topic-map .map a, .topic-map .map .number {
+    line-height: 1.4;
+    color: #08c;
+    text-decoration: none;
+    cursor: pointer;
+
+}
+
+span.relative-date {
+    white-space: nowrap;
+}
+
+.topic-map .avatar {
+    float: left;
+    margin-right: 4px;
+		border-radius: 50%;
+		vertical-align: middle;
+		border: 0;
+}
+
+.topic-map .map .secondary {
+    text-align: center;
+}
+
+.topic-map .map .number, .topic-map .map i {
+    color: #646464;
+    font-size: 1.3195em;
+    line-height: 1.2;
+}

@@ -1,11 +1,11 @@
 <?php
+add_action( 'wp_enqueue_scripts', 'add_topic_map_styles' );
+function add_topic_map_styles(){
+  wp_enqueue_style( 'topic-map-style',  get_theme_file_uri( '/assets/css/topic-map.css' ) );
+}
+
 add_filter( 'discourse_replies_html', 'add_topic_map' );
 function add_topic_map($content){
-	$topic_map_styles = '
-<styles>
-	
-</styles>
-	';
 	$topic_map = '
 <div class="topic-map">
 	<section class="map map-collapsed">
@@ -55,26 +55,11 @@ function add_topic_map($content){
 				<span class="number">4</span>
 				<h4>links</h4>
 			</li>
-			<li class="avatars">
-				<div>
-					<a class="poster trigger-user-card" title="joebuhlig" data-user-card="joebuhlig">
-						<img alt="" width="32" height="32" src="/user_avatar/team.procourse.co/joebuhlig/32/3_1.png" title="joebuhlig" class="avatar">
-						<span class="post-count">8</span>
-					</a>
-				</div>
-				<div>
-					<a class="poster trigger-user-card" title="sudaraka" data-user-card="sudaraka">
-						<img alt="" width="32" height="32" src="/user_avatar/team.procourse.co/sudaraka/32/16_1.png" title="sudaraka" class="avatar">
-						<span class="post-count">8</span>
-					</a>
-				</div>
-			</li>
 		</ul>
 	</section>
 </div>
 ';
 
-	return $topic_map . $content;
+	return $topic_map_styles . $topic_map . $content;
 }
-
 ?>
