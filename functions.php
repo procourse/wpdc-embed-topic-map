@@ -1,65 +1,82 @@
 <?php
-add_action( 'wp_enqueue_scripts', 'add_topic_map_styles' );
-function add_topic_map_styles(){
-  wp_enqueue_style( 'topic-map-style',  get_theme_file_uri( '/assets/css/topic-map.css' ) );
+//Enqueue the Dashicons script
+add_action('wp_enqueue_scripts', 'load_dashicons_front_end');
+function load_dashicons_front_end()
+{
+    wp_enqueue_style('dashicons');
 }
 
-add_filter( 'discourse_replies_html', 'add_topic_map' );
-function add_topic_map($content){
-	$topic_map = '
+//Enqueue the Styles
+wp_enqueue_style('topic-map-style', get_theme_file_uri('/assets/css/topic-map.css'));
+
+//Enqueue the Scripts
+wp_enqueue_script('topic-map-expand-toggle', get_theme_file_uri('/assets/js/topic-map.js'), array(
+    'jquery'
+), '1.0', true);
+
+add_filter('discourse_replies_html', 'add_topic_map');
+function add_topic_map($content)
+{
+    $topic_map = '
 <div class="topic-map">
-	<section class="map map-collapsed">
-		<nav class="buttons">
-			<button class="widget-button btn btn no-text btn-icon" aria-label="toggle topic details" title="toggle topic details">
-				<i class="fa fa-chevron-down d-icon d-icon-chevron-down" aria-hidden="true"></i>
-			</button>
-		</nav>
-		<ul class="clearfix">
-			<li>
-				<h4>created</h4>
-				<div class="topic-map-post created-at">
-					<a class="trigger-user-card " data-user-card="joebuhlig">
-						<img alt="" width="20" height="20" src="/user_avatar/team.procourse.co/joebuhlig/20/3_1.png" title="joebuhlig" class="avatar">
-					</a>
-					<span title="Jun 8, 2018 12:23 am" data-time="1528397631731" data-format="tiny" class="relative-date">Jun 8</span>
-				</div>
-			</li>
-			<li>
-				<a href="/t/rstudio-discourse-theme-to-show-user-custom-fields-as-columns-on-group-page/187/16">
-					<h4>last reply</h4>
-					<div class="topic-map-post last-reply">
-						<a class="trigger-user-card " data-user-card="sudaraka">
-							<img alt="" width="20" height="20" src="/user_avatar/team.procourse.co/sudaraka/20/16_1.png" title="sudaraka" class="avatar">
-						</a>
-						<span title="Aug 24, 2018 9:54 pm" data-time="1535127861266" data-format="tiny" class="relative-date">23h</span>
-					</div>
-				</a>
-			</li>
-			<li>
-				<span class="number">15</span>
-				<h4>replies</h4>
-			</li>
-			<li class="secondary">
-				<span class="number">27</span>
-				<h4>views</h4>
-			</li>
-			<li class="secondary">
-				<span class="number">2</span>
-				<h4>users</h4>
-			</li>
-			<li class="secondary">
-				<span class="number">9</span>
-				<h4>likes</h4>
-			</li>
-			<li class="secondary">
-				<span class="number">4</span>
-				<h4>links</h4>
-			</li>
-		</ul>
-	</section>
+    <section class="map map-collapsed">
+        <nav class="buttons">
+            <button class="widget-button btn btn no-text btn-icon" id="toggle-expand">
+                <span id="arrow" class="dashicons dashicons-arrow-down-alt2"></span>
+            </button>
+        </nav>
+        <ul class="clearfix">
+            <li>
+                <h4>created</h4>
+                <div class="topic-map-post created-at">
+                    <a class="trigger-user-card " data-user-card="joebuhlig">
+                        <img alt="" width="20" height="20" src="{post_created_user_avatar}" title="{post_created_user_username}" class="avatar">
+                    </a>
+                    <span class="relative-date">{post_created_relative_time}</span>
+                </div>
+            </li>
+            <li>
+                <div>
+                    <h4>last reply</h4>
+                    <div class="topic-map-post last-reply">
+                        <a class="trigger-user-card ">
+                            <img alt="" width="20" height="20" src="{last_reply_user_avatar}" title="{last_reply_user_username}" class="avatar">
+                        </a>
+                        <span class="relative-date">{last_reply_relative_time}</span>
+                    </div>
+                </div>
+            </li>
+            <li>
+                <span class="number">{replies_count}</span>
+                <h4>replies</h4>
+            </li>
+            <li class="secondary">
+                <span class="number">{participants_count}</span>
+                <h4>users</h4>
+            </li>
+            <li class="secondary">
+                <span class="number">{links_count}</span>
+                <h4>links</h4>
+            </li>
+        </ul>
+    </section>
+    <section class="map-expanded" id="map-expanded" style="display:none">
+        <div class="frequent-posters">
+            <span class="topic-map-span">Frequent Posters</span>
+            <p>{participants}</p>
+        </div>
+        <div class="popular-links">
+            <span class="topic-map-span">Popular Links</span>
+            <p class="popular-links-p">{popular_links}</p>
+        </div>
+
+    </section>
+<script>
+
+</script>
 </div>
 ';
 
-	return $topic_map_styles . $topic_map . $content;
+    return $topic_map_styles . $topic_map . $content;
 }
 ?>
