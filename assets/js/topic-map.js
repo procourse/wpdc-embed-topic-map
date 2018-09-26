@@ -9,4 +9,8 @@
             expand_section.css('display', 'block');
         }
     });
+
+    if ($('.popular-links > .popular-links-p').is(':empty')) {
+      $('.popular-links').hide();
+    }
 })(jQuery);

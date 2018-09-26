@@ -1,19 +1,28 @@
 <?php
-//Enqueue the Dashicons script
+/**
+ * Enqueue the Dashicons script.
+ */
 add_action('wp_enqueue_scripts', 'load_dashicons_front_end');
 function load_dashicons_front_end()
 {
     wp_enqueue_style('dashicons');
 }
 
-//Enqueue the Styles
+/**
+ * Enqueue the Styles.
+ */
 wp_enqueue_style('topic-map-style', get_theme_file_uri('/assets/css/topic-map.css'));
 
-//Enqueue the Scripts
+/**
+ * Enqueue the Scripts.
+ */
 wp_enqueue_script('topic-map-expand-toggle', get_theme_file_uri('/assets/js/topic-map.js'), array(
     'jquery'
 ), '1.0', true);
 
+/**
+ * Add Topic-Map.
+ */
 add_filter('discourse_replies_html', 'add_topic_map');
 function add_topic_map($content)
 {
