@@ -38,7 +38,7 @@ function add_topic_map($content)
             <li>
                 <h4>created</h4>
                 <div class="topic-map-post created-at">
-                    <a class="trigger-user-card " data-user-card="joebuhlig">
+                    <a class="trigger-user-card">
                         <img alt="" width="20" height="20" src="{post_created_user_avatar}" title="{post_created_user_username}" class="avatar">
                     </a>
                     <span class="relative-date">{post_created_relative_time}</span>
@@ -48,7 +48,7 @@ function add_topic_map($content)
                 <div>
                     <h4>last reply</h4>
                     <div class="topic-map-post last-reply">
-                        <a class="trigger-user-card ">
+                        <a class="trigger-user-card">
                             <img alt="" width="20" height="20" src="{last_reply_user_avatar}" title="{last_reply_user_username}" class="avatar">
                         </a>
                         <span class="relative-date">{last_reply_relative_time}</span>
@@ -78,11 +78,7 @@ function add_topic_map($content)
             <span class="topic-map-span">Popular Links</span>
             <p class="popular-links-p">{popular_links}</p>
         </div>
-
     </section>
-<script>
-
-</script>
 </div>
 ';
 
