@@ -135,3 +135,52 @@ span.relative-date {
 .topic-map .popular-links-p {
 	font-size: 12px;
 }
+
+/* Adding responsiveness to the topic-map (Can't find the issue with the styles) */
+@media screen and (max-width:933px) {
+	.topic-map .map li:last-child{
+		clear: left;
+	}
+}
+
+@media screen and (max-width:847px) {
+	.topic-map .map li:nth-child(4){
+		clear: left;
+	}
+
+	.topic-map .map li:last-child{
+		clear: none;
+	}
+}
+
+@media screen and (max-width:767px) {
+	.topic-map .map li:nth-child(4){
+		clear: none;
+	}
+}
+
+@media screen and (max-width:591px) {
+	.topic-map .map li:last-child{
+		clear: left;
+	}
+}
+
+@media screen and (max-width:538px) {
+	.topic-map .map li:nth-child(4){
+		clear: left;
+	}
+
+	.topic-map .map li:last-child{
+		clear: none;
+	}
+}
+
+@media screen and (max-width:427px) {
+	.topic-map .map li:nth-child(3){
+		clear: left;
+	}
+
+	.topic-map .map li:nth-child(4){
+		clear: none;
+	}
+}
